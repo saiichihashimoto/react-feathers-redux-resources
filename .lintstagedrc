@@ -1,0 +1,22 @@
+{
+  "**/*.js": [
+    "eslint --report-unused-disable-directives --fix --ignore-pattern '!.babelrc.js'",
+    "git add"
+  ],
+  "**/*.{gif,jpeg,jpg,png,svg}": [
+    "imagemin-lint-staged",
+    "git add"
+  ],
+  "**/{!(package|package-lock).json,!(.sentrycli)rc,}": [
+    "jsonlint --in-place",
+    "git add"
+  ],
+  ".eslintrc": [
+    "npm run lint:js",
+    "git add src"
+  ],
+  "package.json": [
+    "sort-package-json",
+    "git add"
+  ]
+}
