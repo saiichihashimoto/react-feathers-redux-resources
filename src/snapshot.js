@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { PureComponent, forwardRef } from 'react';
+import React, { PureComponent } from 'react';
 import createActionCreators from 'redux-resource-action-creators';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -55,10 +55,10 @@ class Snapshot extends PureComponent {
 }
 
 export default compose(
-	(Component) => forwardRef((props, ref) => (
+	(Component) => (props) => (
 		<FeathersContext.Consumer>
-			{(app) => <Component {...props} ref={ref} app={app} />}
+			{(app) => <Component app={app} {...props} />}
 		</FeathersContext.Consumer>
-	)),
+	),
 	connect(null, Object.entries(createActionCreators('read'))),
 )(Snapshot);

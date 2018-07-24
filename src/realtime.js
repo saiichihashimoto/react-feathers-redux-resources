@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { PureComponent, forwardRef } from 'react';
+import React, { PureComponent } from 'react';
 import { _, filterQuery, sorter } from '@feathersjs/commons';
 import { actionTypes, getResources } from 'redux-resource';
 import { compose } from 'redux';
@@ -70,11 +70,11 @@ class Realtime extends PureComponent {
 }
 
 export default compose(
-	(Component) => forwardRef((props, ref) => (
+	(Component) => (props) => (
 		<FeathersContext.Consumer>
-			{(app) => <Component {...props} ref={ref} app={app} />}
+			{(app) => <Component app={app} {...props} />}
 		</FeathersContext.Consumer>
-	)),
+	),
 	connect(
 		() => createStructuredSelector({
 			listValues: createSelector(
