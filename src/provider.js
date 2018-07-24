@@ -9,6 +9,7 @@ export default class Provider extends PureComponent {
 	}
 	render() {
 		const { client, children } = this.props;
+
 		return (
 			<FeathersContext.Provider value={client}>
 				{children}

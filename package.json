@@ -14,7 +14,8 @@
   ],
   "main": "lib/index.js",
   "scripts": {
-    "build": "rm -rf lib && cross-env NODE_ENV=production babel src --out-dir lib --source-maps inline",
+    "build": "run-s build:*",
+    "build:lib": "rm -rf lib && cross-env NODE_ENV=production babel src --out-dir lib --source-maps inline",
     "clean": "rm -rf lib",
     "precommit": "lint-staged",
     "commitmsg": "validate-commit-msg",
@@ -22,7 +23,8 @@
     "lint:js": "eslint --report-unused-disable-directives --fix --ignore-path .gitignore .",
     "lint:json": "git ls-files | grep \"\\(\\.json$\\)\\|\\(\\..*rc$\\)\" | grep -v package | xargs -n 1 jsonlint --in-place",
     "lint:package-json": "sort-package-json",
-    "semantic-release": "semantic-release",
+    "release": "run-s release:*",
+    "release:npm": "semantic-release",
     "test": "echo no tests"
   },
   "config": {

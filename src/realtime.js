@@ -19,6 +19,7 @@ class Realtime extends PureComponent {
 	}
 	componentDidMount() {
 		const { app, resourceType } = this.props;
+
 		app.service(resourceType).on('created', this.handleChange);
 		app.service(resourceType).on('updated', this.handleChange);
 		app.service(resourceType).on('patched', this.handleChange);
@@ -26,6 +27,7 @@ class Realtime extends PureComponent {
 	}
 	componentDidUpdate({ resourceType: prevResourceType }) {
 		const { app, resourceType } = this.props;
+
 		if (resourceType !== prevResourceType) {
 			app.service(prevResourceType).off('created', this.handleChange);
 			app.service(prevResourceType).off('updated', this.handleChange);
@@ -39,6 +41,7 @@ class Realtime extends PureComponent {
 	}
 	componentWillUnmount() {
 		const { app, resourceType } = this.props;
+
 		app.service(resourceType).off('created', this.handleChange);
 		app.service(resourceType).off('updated', this.handleChange);
 		app.service(resourceType).off('patched', this.handleChange);
@@ -54,14 +57,13 @@ class Realtime extends PureComponent {
 		if (matchesQuery === listValues.some(({ id }) => obj.id === id)) {
 			return update(resourceType, obj);
 		}
-		return update(resourceType, obj, list, matchesQuery ?
+		const updatedList = matchesQuery ?
 			[...listValues, obj]
-				.sort(sorter($sort))
-				.map(({ id }) => id) :
+				.sort(sorter($sort)) :
 			listValues
-				.filter(({ id }) => obj.id !== id)
-				.map(({ id }) => id)
-		);
+				.filter(({ id }) => obj.id !== id);
+
+		return update(resourceType, obj, list, updatedList.map(({ id }) => id));
 	}
 	handleRemove = (obj) => this.props.remove(this.props.resourceType, obj)
 	render() {

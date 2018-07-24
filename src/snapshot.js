@@ -22,6 +22,7 @@ class Snapshot extends PureComponent {
 	}
 	componentDidUpdate({ resourceType: prevResourceType, requestKey: prevRequestKey }) {
 		const { resourceType, requestKey } = this.props;
+
 		if (resourceType !== prevResourceType || requestKey !== prevRequestKey) {
 			this.snapshot.cancel();
 			this.snapshot = this.getSnapshot();
