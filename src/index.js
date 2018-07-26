@@ -1,5 +1,5 @@
-import Provider from './provider';
-import Realtime from './realtime';
-import Snapshot from './snapshot';
+import FeathersReduxResource from './components/FeathersReduxResource';
+import Realtime from './components/Realtime';
+import Snapshot from './components/Snapshot';
 
-export { Provider, Realtime, Snapshot };
+export { FeathersReduxResource, Realtime, Snapshot };

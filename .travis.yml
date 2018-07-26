@@ -1,9 +1,8 @@
 language: node_js
-cache:
-  directories:
-    - ~/.npm
-notifications:
-  email: false
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
+    - gh-pages
 node_js:
   - '9'
   - '10'
@@ -17,6 +16,15 @@ after_success:
   - npm run semantic-release
 after_script:
   - greenkeeper-lockfile-upload
-branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
+deploy:
+  provider: pages
+  on:
+    branch: master
+  local-dir: build
+  github-token: $GH_TOKEN
+  skip_cleanup: true
+cache:
+  directories:
+    - ~/.npm
+notifications:
+  email: false
