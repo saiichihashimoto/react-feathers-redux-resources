@@ -48,7 +48,7 @@
     "@feathersjs/client": "^3.5.4",
     "@feathersjs/commons": "^2.0.0",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^8.2.6",
+    "babel-eslint": "^9.0.0",
     "cross-env": "^5.2.0",
     "eslint": "^5.2.0",
     "eslint-plugin-import": "^2.13.0",
