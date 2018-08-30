@@ -46,7 +46,7 @@
     "@babel/preset-react": "^7.0.0-beta.54",
     "@babel/register": "^7.0.0-beta.54",
     "@feathersjs/client": "^3.5.4",
-    "@feathersjs/commons": "^2.0.0",
+    "@feathersjs/commons": "^3.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
     "cross-env": "^5.2.0",
